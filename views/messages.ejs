@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<h1>Messages</h1>
+		<ul>
+			<% messages.forEach( el => { %>
+			<li class="todoItem" data-id="<%=el._id%>">
+				<!-- <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.message %></span> -->
+				<span>User: <%= user.userName %></span>
+				<!-- <span class="del"> Delete </span> -->
+			</li>
+			<li data-id="<%=el._id%>">
+				<span>Comment: <%= el.message %></span>
+			</li>
+			<li data-id="<%=el._id%>">
+				<span>Your comment has <%= el.likes %> likes</span>
+			</li>
+			<li data-id="<%=el._id%>">
+				<span>Replies: <%= el.replies %></span>
+			</li>
+			<% }) %>
+		</ul>
+
+		<!-- <h2><%= user.userName %> has <%= left %> things left to do.</h2> -->
+
+		<form action="/messages/createMessage" method="POST">
+			<input type="text" placeholder="Enter Your Message" name="todoItem" />
+			<input type="submit" />
+		</form>
+
+		<a href="/logout">Logout</a>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>
